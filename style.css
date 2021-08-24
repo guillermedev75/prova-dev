@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+.header{
+    width: 1366px;
+    color: black;
+    padding: 12px 80px 13px 80px;
+    box-shadow: 0px 5px 10px lightgrey;
+    position: absolute;
+    height: 80px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header img{
+    float: left;
+    height: 55px;
+}
+
+.header h2{
+    float: right;
+    font-size: 30px;
+    margin-top:12px;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+input[type="text"]{
+    position: absolute;
+    width: 1206px;
+    height: 70px;
+    margin: 123px 80px 0px 80px;
+    
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    color:black;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+
+    padding: 35px 16px 35px 18px ;
+}
+
+.lupa{
+    width:34px;
+    height:34px;
+    position: absolute;
+    margin-top: 145px;
+    margin-left: 1217px;
+}
+
+.lupa:hover{
+    cursor: pointer;
+}
+
+.content{
+    position: absolute;
+    margin-top: 220px;
+}
+
+.content h2{
+    color:black;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 80px;
+}
+
+.cars{
+    margin: 30px 80px;
+    height: 320px;
+    display: flex;
+}
+
+.car{
+    width: 262px;
+    flex: 1;
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+.car h2{
+    color:black;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    float: left;
+    margin-left: 17px;
+}
+
+.car h3{
+    color:black;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    float: right;
+    margin-right: 17px;
+    margin-top: 30px;
+}
+
+.carImg{
+    width: 227px;
+    height: 186px;
+    border-radius: 10px;
+    margin: 15 17.5px;
+    object-fit: cover;
+}
