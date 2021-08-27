@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendarro LTDA</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css">
 
 </head>
 
@@ -43,8 +42,10 @@
 
         <?php if($carros): ?>
             
-            <h1><?= count()$carros) ?> Carros encontrados:</h1>
+            <!-- Conta quantos modelos de carros foram encontrados-->
+            <h1><?= count($carros) ?> Carros encontrados:</h1>
             
+            <!-- Laço para exibir os modelos recuperados do banco de dados-->
             <?php foreach ($carros as $carro): ?>
             
                 <div class="product">
@@ -60,6 +61,7 @@
 
             <?php endforeach; ?>
 
+        <!-- Retorna erro -->
         <?php else: ?>
             <h2>Erro no servidor...</h2>
         <?php endif ?>
