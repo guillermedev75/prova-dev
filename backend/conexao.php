@@ -17,7 +17,7 @@ class DataBase {
 
                 //Variaveis
                 $host = '127.0.0.1'; //servidor
-                $pw = ''; //não sei o que é pw
+                $pw = ''; //Password
                 $user = 'root'; //usuario para acesso ao banco de dados
                 $dbname = 'prova'; //banco de dados
 
