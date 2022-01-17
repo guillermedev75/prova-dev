@@ -1,5 +1,3 @@
-<?php require 'backend/controller.php' ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,62 +5,46 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>Vendarro LTDA</title>
 </head>
 
 <body>
     
-    <header class="container">
-
-        <div class="img">
-            <img src="img/logo.png">
-        </div>
-        <div>
+   <header>
+      <div class="headerContent">
+         <div class="logoContainer">
+            <img src="img/logo.png" alt="vendarro.png">
+         </div>
+         <div class="titleContainer">
             <h1>Vendarro LTDA</h1>
-        </div>
+         </div>
+      </div>
+   </header>
 
-    </header>
-
-    <!-- Barra de pesquisa usa o method GET por url -->
-    <div class="container searchContainer">
-
-        <form action="#" method="GET" class="searchBar">
-            <input type="text" name="pesquisa" placeholder="Digite alguma coisa...">
-            <img src="img/lupa.png" alt="lupa">
-        </form>
-
-    </div>
-    
-    <!-- modelos de carro que apareceram pela pesquisa -->
-    <div class="productContainer container">
-
-        <?php if($carros): ?>
-            
-            <!-- Conta quantos modelos de carros foram encontrados-->
-            <h1><?= count($carros) ?> Carros encontrados:</h1>
-            
-            <!-- Laço para exibir os modelos recuperados do banco de dados-->
-            <?php foreach ($carros as $carro): ?>
-            
-                <div class="product">
-
-                    <img src="img/<?= $carro['nome']?>">
-                    
-                    <div class="legend">
-                        <h2 class="title"><?= $carro['nome']?></h2>
-                        <p class="price">R$ <?= $carro['preco']?></p>
-                    </div>
-
-                </div>
-
-            <?php endforeach; ?>
-
-        <!-- Retorna erro -->
-        <?php else: ?>
-            <h2>Erro no servidor...</h2>
-        <?php endif ?>
-
-    </div>
+   <div class="content">
+      <div class="searchBarContainer">
+          <form>
+             <input type="text" placeholder="Digite alguma coisa...">
+             <i class="fas fa-search"></i>
+          </form>
+      </div>
+      <div class="productContainer">
+         <div class="productTitle">
+            <h2>Carros encontrados:</h2>
+         </div>
+         <div class="cardContainer">
+            <div class="productCard">
+               <img src="img/jaguar-fake.jpg" alt="">
+               <h3 class="productName">Jaguar Fake</h3>
+               <h3 class="productValue">R$13,99</h3>
+            </div>
+         </div>
+      </div>
+   </div>
 
 </body>
 </html>
