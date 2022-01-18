@@ -1,5 +1,19 @@
+<?php 
+   require "controller.php";
+
+   if($_GET['busca']) {
+      // $carros = getCarrosFromDbFilterName($_GET['busca']);
+      $carros = getCarrosFromDb();
+
+   } else {
+      $carros = getCarrosFromDb();
+   }
+
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +24,11 @@
    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>Vendarro LTDA</title>
+   <script>
+      function comprar() {
+         alert('Seu nome está sujo!')
+      }
+   </script>
 </head>
 
 <body>
@@ -27,21 +46,22 @@
 
    <div class="content">
       <div class="searchBarContainer">
-          <form>
-             <input type="text" placeholder="Digite alguma coisa...">
-             <i class="fas fa-search"></i>
-          </form>
+         <form method="GET">
+            <input type="text" name="busca" placeholder="Digite alguma coisa..."></input>
+            <button class="searchIcon">
+               <i class="fas fa-search"></i>
+            </button>
+         </form>
       </div>
       <div class="productContainer">
          <div class="productTitle">
-            <h2>Carros encontrados:</h2>
+            <h2><?= sizeof($carros) ?>Carros encontrados:</h2>
          </div>
          <div class="cardContainer">
-            <div class="productCard">
-               <img src="img/jaguar-fake.jpg" alt="">
-               <h3 class="productName">Jaguar Fake</h3>
-               <h3 class="productValue">R$13,99</h3>
-            </div>
+               <?php
+                  // getCarros()
+                  printCarros($carros);
+               ?>
          </div>
       </div>
    </div>
