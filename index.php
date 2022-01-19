@@ -1,12 +1,12 @@
 <?php 
    require "controller.php";
 
-   if($_GET['busca']) {
-      // $carros = getCarrosFromDbFilterName($_GET['busca']);
-      $carros = getCarrosFromDb();
-
+   if(isset($_GET['busca'])) {
+      $carros = getSearchCard($_GET['busca']);
+   } else if(isset($_GET['clean'])) {
+      $carros = getAllCards();
    } else {
-      $carros = getCarrosFromDb();
+      $carros = getAllCards();
    }
 
 
@@ -24,10 +24,9 @@
    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>Vendarro LTDA</title>
+
    <script>
-      function comprar() {
-         alert('Seu nome está sujo!')
-      }
+      const comprar = () => { alert('Seu nome está sujo!') }
    </script>
 </head>
 
@@ -48,6 +47,9 @@
       <div class="searchBarContainer">
          <form method="GET">
             <input type="text" name="busca" placeholder="Digite alguma coisa..."></input>
+            <button type="submit" name="clean" class="cleanBtn">
+               Limpar
+            </button>
             <button class="searchIcon">
                <i class="fas fa-search"></i>
             </button>
@@ -55,14 +57,17 @@
       </div>
       <div class="productContainer">
          <div class="productTitle">
-            <h2><?= sizeof($carros) ?>Carros encontrados:</h2>
+            <h2><?= sizeof($carros) ?> Carros encontrados:</h2>
          </div>
-         <div class="cardContainer">
-               <?php
-                  // getCarros()
-                  printCarros($carros);
+            <div class="cardContainer">
+               <?php foreach($carros as $carros)
+                  echo "<div class='productCard' onClick='comprar()'>
+                           <img src='img/{$carros['foto']}'>
+                           <h3 class='productName'>{$carros['nome']}</h3>
+                           <h3 class='productValue'>R\${$carros['preco']}</h3>
+                        </div>"
                ?>
-         </div>
+            </div>
       </div>
    </div>
 
