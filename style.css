@@ -66,6 +66,19 @@ header {
     cursor: pointer;
 }
 
+.brandSelect {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -245px;
+    padding: 2px;
+    z-index: 2;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: right;
+}
+
 .cleanBtn {
     background-color: royalblue;
     border: none;
@@ -80,6 +93,7 @@ header {
     font-family: roboto, sans-serif;
     font-weight: bold;
     transition-duration: 0.2s;
+    text-decoration: none;
 }
 
 .cleanBtn:hover {
@@ -152,6 +166,14 @@ header {
     right: 0;
     margin-right: 15px;
     margin-bottom: 10px;
+}
+
+.alertErro {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: roboto, sans-serif;
 }
 
 @media (max-width: 1039px) {

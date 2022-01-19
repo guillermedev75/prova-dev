@@ -1,13 +1,5 @@
 <?php 
    require "controller.php";
-
-   if(isset($_GET['busca'])) {
-      $carros = getSearchCard($_GET['busca']);
-   } else if(isset($_GET['clean'])) {
-      $carros = getAllCards();
-   } else {
-      $carros = getAllCards();
-   }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -39,10 +31,23 @@
    <div class="content">
       <div class="searchBarContainer">
          <form method="GET">
-            <input type="text" name="busca" placeholder="Digite alguma coisa..."></input>
-            <button type="submit" name="clean" class="cleanBtn">
+            <input type='text' value="<?= isset($_GET['busca']) ? $_GET['busca'] : '' ?>" name='busca' placeholder='Digite alguma coisa...'></input>
+            <select name='marca' class="brandSelect">
+               <!-- <option value="<?= isset($_GET['busca']) ? $_GET['marca'] : '' ?>" selected><?= isset($_GET['busca']) ? $_GET['marca'] : 'Marcas' ?></option> -->
+               <option value="">Marcas</option>
+               <?php
+                  foreach($marcas as $marca) {
+                     $marcaNome = $marca['nome'];
+                     $marcaId = $marca['id'];
+                     $selected = isset($_GET['marca']) && $_GET['marca'] == $marcaId ? 'selected' : '';
+
+                     echo "<option value='$marcaId' $selected>$marcaNome</option>";
+                  }
+               ?>
+            </select>
+            <a href="/prova-dev" class="cleanBtn">
                Limpar
-            </button>
+            </a>
             <button class="searchIcon">
                <i class="fas fa-search"></i>
             </button>
@@ -53,12 +58,18 @@
             <h2><?= sizeof($carros) ?> Carros encontrados:</h2>
          </div>
             <div class="cardContainer">
-               <?php foreach($carros as $carros)
-                  echo "<div class='productCard' onClick='comprar()'>
-                           <img src='img/{$carros['foto']}'>
-                           <h3 class='productName'>{$carros['nome']}</h3>
-                           <h3 class='productValue'>R\${$carros['preco']}</h3>
-                        </div>"
+               <?php 
+               if(!count($carros)){
+                  echo "<div class='alertErro'>Nenhum carro encontrado!</div>";
+               } else {
+                  foreach($carros as $carro) {
+                     echo "<div class='productCard' onClick='comprar()'>
+                     <img src='img/{$carro['foto']}'>
+                     <h3 class='productName'>{$carro['nome']}</h3>
+                     <h3 class='productValue'>R\${$carro['preco']}</h3>
+                     </div>";
+                  }
+               }
                ?>
          </div>
       </div>
