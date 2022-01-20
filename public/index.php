@@ -13,6 +13,7 @@
    <script src="js/script.js"></script>
 </head>
 <body>
+   <div class="containerClose"></div>
    <header>
       <div class="headerContent">
          <div class="logoContainer">
@@ -26,13 +27,18 @@
    <div class="content">
       <div class="searchBarContainer">
          <form>
-            <input type='text' id='search' name='busca' placeholder='Digite alguma coisa...'></input>
-            <select name='marca' id="brandSelect" class="brandSelect">
-            </select>
-            <button type="button" id="cleanBtn" class="cleanBtn">
-               Limpar
-            </button>
-            <i class="fas fa-search"></i>
+            <input type='text' id='search' name='busca' placeholder='Digite alguma coisa...'>
+               <i class="fas fa-filter filterIcon"></i>
+               <i class="fas fa-close filterIconClose"></i>
+            </input>
+            <div class='filterBox'>
+               <button type="button" id="cleanBtn" class="cleanBtn">
+                  Limpar
+               </button>
+               <select name='marca' id="brandSelect" class="brandSelect">
+                  <option value="" selected>Marcas</option>
+               </select>
+            </div>
          </form>
       </div>
       <div class="productContainer">
@@ -43,5 +49,8 @@
          </div>
       </div>
    </div>
+   <footer>
+      <p>Version 2.0</p>
+   </footer>
 </body>
 </html>
