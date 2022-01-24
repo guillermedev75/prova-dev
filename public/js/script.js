@@ -1,12 +1,25 @@
 $(document).ready(function(){
-
     const urlApi = "../src/controller.php"
 
-    
     let dataCards
+    let strSearch
+    let brandSelected
+    let lastSearch = []
+    let lastBrand  = []
 
-    $("#search").keyup(() => {
-        
+    $("#search").keyup(function() {
+        strSearch = $(this).val()
+        searchCards()
+    })
+
+    $("#brandSelect").change(function() {
+        brandSelected = $(this).val()
+        console.log(brandSelected)
+        searchCards() 
+    })
+
+    $("#cleanBtn").click(() => {
+        cleanCards()
     })
 
     $(".filterIcon").click(function() {
@@ -16,12 +29,14 @@ $(document).ready(function(){
         $(".filterIcon").hide();
 
     })
+
     $(".filterIconClose").click(() => {
         $(".filterBox").slideUp("fast");
         $(".filterIconClose").hide();
         $(".filterIcon").show();
         $(".containerClose").fadeOut("fast")
     })
+
     $(".containerClose").click(() => {
         $(".filterBox").slideUp("fast");
         $(".filterIconClose").hide();
@@ -74,6 +89,10 @@ $(document).ready(function(){
         let cardContainer = $(".cardContainer")
         let productTitle  = $(".productTitle")
         let dataLen = dataCards.length
+
+        cardContainer.fadeOut("fast")
+        cardContainer.html("")
+        productTitle.html("")
         
         
         if (dataLen == 0) {
@@ -94,6 +113,9 @@ $(document).ready(function(){
                 `)
             }
         }
+
+        cardContainer.fadeIn("fast").animate({ opacity : "1"},("fast"))
+        productTitle.fadeIn("fast").animate({ opacity : "1"},("fast"))
         
         $(".productCard").click(() => {
              alert('Seu nome está sujo!') 
@@ -112,7 +134,49 @@ $(document).ready(function(){
             `)
         }
     }
+
+    const searchCards = () => {
+
+        let cardsFiltered = dataCards
+        console.log(strSearch.length)
+
+        if(brandSelected){
+            cardsFiltered = cardsFiltered.filter(search => search.marca.indexOf(brandSelected)> -1)
+            if(strSearch.length != 1 && brandSelected)
+            cardsFiltered = cardsFiltered.filter(search => search.nome.toLowerCase().indexOf(strSearch.toLowerCase())> -1 && search.marca.indexOf(brandSelected)> -1)
+        }
+        else if(strSearch.length != 1 && strSearch)
+            cardsFiltered = cardsFiltered.filter(search => search.nome.toLowerCase().indexOf(strSearch.toLowerCase())> -1)
+        else {
+            listCards(dataCards)
+            lastSearch = []
+            lastSearch = []
+        }
+
+        let verifySameArray = JSON.stringify(cardsFiltered) === JSON.stringify(lastSearch)
+        let verifySameBrand = JSON.stringify(cardsFiltered) === JSON.stringify(lastBrand)
+
+        console.log(verifySameArray)
+        console.log(verifySameBrand)
+
+        if(!verifySameArray || !verifySameBrand) {
+            lastSearch = cardsFiltered
+            lastBrand = cardsFiltered
+            listCards(cardsFiltered)
+        }
+
+    }
+
+    const cleanCards = () => {
+        let verifyArray = lastSearch.length != 0 && lastBrand.length != 0
+        if(verifyArray)
+            listCards(dataCards)
+            $(".filterBox").slideUp("fast");
+            $(".filterIconClose").hide();
+            $(".filterIcon").show();
+            $(".containerClose").fadeOut("fast")
+            $("#search").val("")
+    }
     
     renderPage()
-
 })

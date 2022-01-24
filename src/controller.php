@@ -17,34 +17,33 @@ if($requestType == "get-all-cards"){
    echo $result;
 }
 
-if($requestType == "get-one-card") {
+// if($requestType == "get-search'") {
+//    $search   = isset($_POST['search']) ? $_POST['search'] : "";
+//    $id_marca = isset($_POST['id_marca']) ? ($_POST['id_marca']) : "";
 
-   $search   = $_POST['search'];
-   $id_marca = $_POST['id_marca'];
+//    $sql = "SELECT C.nome,marca,preco,foto from carros C JOIN marcas M ON M.id = C.marca WHERE 1=1 ";
 
-   $sql = "SELECT C.nome,marca,preco,foto from carros C JOIN marcas M ON M.id = C.marca WHERE 1=1 ";
+//    if($search) {
+//        $search = "%".$search."%";
+//        $sql .= "AND (C.nome LIKE ? OR M.nome LIKE ?) ";
+//    }
 
-   if($search) {
-       $search = "%".$search."%";
-       $sql .= "AND (C.nome LIKE ? OR M.nome LIKE ?) ";
-   }
+//    if($idMarca) {
+//        $sql .= "AND C.marca = ". (int) $idMarca;
+//    }
 
-   if($idMarca) {
-       $sql .= "AND C.marca = ". (int) $idMarca;
-   }
+//    $stmt = $connection->prepare($sql);
 
-   $stmt = $connection->prepare($sql);
+//    if($search) {
+//        $stmt->bindValue(1,$search,PDO::PARAM_STR);
+//        $stmt->bindValue(2,$search,PDO::PARAM_STR);
+//    }
 
-   if($search) {
-       $stmt->bindValue(1,$search,PDO::PARAM_STR);
-       $stmt->bindValue(2,$search,PDO::PARAM_STR);
-   }
+//   $stmt->execute();
+//   $result = json_encode($stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : false);
 
-  $stmt->execute();
-  $result = json_encode($stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : false);
-
-  echo $result;
-}
+//   echo $result;
+// }
 
 // if(isset($_GET['busca']) or isset($_GET['marca'])) {
 //    $carros = getSearchCard($connection,$_GET['busca'],$_GET['marca']);

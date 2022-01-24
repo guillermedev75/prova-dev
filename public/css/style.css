@@ -221,6 +221,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    opacity: 0;
 }
 
 .productCard {

@@ -26,8 +26,8 @@
    </header>
    <div class="content">
       <div class="searchBarContainer">
-         <form>
-            <input type='text' id='search' name='busca' placeholder='Digite alguma coisa...'>
+         <form action="">
+            <input type='text' id='search' placeholder='Digite alguma coisa...'>
                <i class="fas fa-filter filterIcon"></i>
                <i class="fas fa-close filterIconClose"></i>
             </input>
@@ -35,7 +35,7 @@
                <button type="button" id="cleanBtn" class="cleanBtn">
                   Limpar
                </button>
-               <select name='marca' id="brandSelect" class="brandSelect">
+               <select id="brandSelect" class="brandSelect">
                   <option value="" selected>Marcas</option>
                </select>
             </div>
