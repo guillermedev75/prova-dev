@@ -2,14 +2,14 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/pages/home.css">
-   <script src="js/home.js"></script>
+   <link rel="stylesheet" href="assets/css/pages/home.css">
+   <script src="assets/js/pages/home.js"></script>
    <title>Home - Vendarro LTDA</title>
 </head>
 <body>
    <div class="content">
       <div class="searchBarContainer">
-         <form action="">
+         <form onsubmit="return false;">
             <input type='text' id='search' placeholder='Digite alguma coisa...'>
                <i class="fas fa-filter filterIcon"></i>
                <i class="fas fa-close filterIconClose"></i>

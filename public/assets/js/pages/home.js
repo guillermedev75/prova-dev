@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    const urlApi = "../src/controller.php"
+    const urlApi = "../src/api/home.php"
+    const urlImg = "assets/img/"
 
     let dataCards
     let strSearch
@@ -14,7 +15,6 @@ $(document).ready(function(){
 
     $("#brandSelect").change(function() {
         brandSelected = $(this).val()
-        console.log(brandSelected)
         searchCards() 
     })
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
                 listCards(dataCards)
             },
             error: () => {
-                alert('Error')
+                listCards([])
             }
         })
     }
@@ -80,7 +80,7 @@ $(document).ready(function(){
                 listBrands(dataBrands)
             },
             error: () => {
-                alert('Error')
+                listBrands([])
             }
         })
     }
@@ -104,9 +104,12 @@ $(document).ready(function(){
             for(let i in dataCards) {
                 let {nome, preco, foto} = dataCards[i]
                 
+                foto == null ? foto = "noImage.png" : foto = foto
+                
+                    
                 cardContainer.append(`
                 <div class='productCard'>
-                <img src='img/${foto}'>
+                <img src='assets/img/${foto}'>
                 <h3 class='productName'>${nome}</h3>
                 <h3 class='productValue'>R$${preco}</h3>
                 </div>
@@ -126,38 +129,34 @@ $(document).ready(function(){
         let selectBrands = $("#brandSelect")
         let dataLen = dataBrands.length
         
-        for(let i in dataBrands) {
-            let {nome, id} = dataBrands[i]
-            
-            selectBrands.append(`
+        if(dataLen == 0){
+                selectBrands.html(`<option>Nenhuma marca encontrada</option>`)
+        } else {
+            for(let i in dataBrands) {
+                let {nome, id} = dataBrands[i]
+                
+                selectBrands.append(`
                 <option value="${id}">${nome}</option>
-            `)
+                `)
+            }
         }
     }
 
     const searchCards = () => {
 
         let cardsFiltered = dataCards
-        console.log(strSearch.length)
 
         if(brandSelected){
             cardsFiltered = cardsFiltered.filter(search => search.marca.indexOf(brandSelected)> -1)
-            if(strSearch.length != 1 && brandSelected)
-            cardsFiltered = cardsFiltered.filter(search => search.nome.toLowerCase().indexOf(strSearch.toLowerCase())> -1 && search.marca.indexOf(brandSelected)> -1)
+            console.log(brandSelected)
         }
-        else if(strSearch.length != 1 && strSearch)
+        if(strSearch && strSearch.length > 1){
             cardsFiltered = cardsFiltered.filter(search => search.nome.toLowerCase().indexOf(strSearch.toLowerCase())> -1)
-        else {
-            listCards(dataCards)
-            lastSearch = []
-            lastSearch = []
         }
 
         let verifySameArray = JSON.stringify(cardsFiltered) === JSON.stringify(lastSearch)
         let verifySameBrand = JSON.stringify(cardsFiltered) === JSON.stringify(lastBrand)
 
-        console.log(verifySameArray)
-        console.log(verifySameBrand)
 
         if(!verifySameArray || !verifySameBrand) {
             lastSearch = cardsFiltered
@@ -176,6 +175,7 @@ $(document).ready(function(){
             $(".filterIcon").show();
             $(".containerClose").fadeOut("fast")
             $("#search").val("")
+            $("#brandSelect").val("")
     }
     
     renderPage()

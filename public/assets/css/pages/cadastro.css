@@ -1,0 +1,128 @@
+.header {
+    background-color: royalblue;
+    border-radius: 7px;
+    padding: 10px;
+    max-width: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    color: #fff;
+    font-weight:  bold;
+    font-family: roboto, sans-serif;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+form {
+    display: block;
+    position: relative;
+}
+
+label {
+    font-family: roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.passwordInfo {
+    display: none;
+}
+
+.passwordInfo p{
+    font-size:  15px;
+    font-weight: 100;
+}
+
+.mostrarSenha1 {
+
+    position: absolute;
+    right: 10px;
+    top: 180px;
+    cursor: pointer;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.mostrarSenha2 {
+    position: absolute;
+    right: 10px;
+    top: 37px;
+    cursor: pointer;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.mostrarSenha1:hover {
+    font-weight: normal;
+}
+
+.mostrarSenha2:hover {
+    font-weight: normal;
+}
+
+.repeatPw {
+    position: relative;
+}
+.repeatPw input {
+    padding-right: 70px;
+}
+
+
+.labelError {
+    color: red !important;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+    border: solid 1px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 15px;
+
+}
+
+#pwInput {
+    padding-right: 70px;
+}
+
+button {
+    margin-top: 15px;
+    width: 50%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: royalblue;
+    color:  #fff;
+    font-family: roboto, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+
+button:hover {
+    background-color: rgb(52, 84, 180);
+}
+
+.invisible {
+    display: none;
+}
